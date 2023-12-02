@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Information about playlist</title>
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.2/dist/css/bootstrap.css}">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap-icons/1.11.1/font/bootstrap-icons.css}">
 </head>
 <body>
     <h1 th:text="${playlist.name}"></h1>
@@ -22,10 +23,8 @@
                 <td th:text="${t.name}"></td>
                 <td th:text="${t.milliseconds}"></td>
                 <td class="text-center">
-                    <!-- Wrap the delete button in a form with th:method="delete" -->
                     <form th:object="${t}" th:action="@{/playlists/{id}/{tid}(id=${playlist.id}, tid=${t.id})}" th:method="delete">
-                        <button type="submit" class="btn btn-danger btn-sm"><span class="bi bi-trash"></span></button>
-                        <!-- Hidden input to support DELETE method in Spring MVC -->
+                        <button type="submit" class="btn btn-danger btn-sm"><span class="bi bi-trash3"></span></button>
                         <input type="hidden" name="_method" value="delete"/>
                     </form>
                 </td>
@@ -38,7 +37,7 @@
         <tr>
             <th>Id</th>
             <th>Name</th>
-            <th class="text-center bi bi-plus">Add</th>
+            <th class="text-center">Add</th>
         </tr>
         </thead>
         <tbody>
@@ -47,7 +46,7 @@
             <td th:text="${t.fullTitle}"></td>
             <td>
                 <form th:action="@{/playlists/{id}/{tid}(id=${playlist.id}, tid=${t.id})}" th:method="post">
-                    <button type="submit" class="btn btn-primary btn-sm bi bi-plus">Add</button>
+                    <button type="submit" class="btn btn-primary btn-sm bi bi-plus"></button>
                 </form>
             </td>
         </tr>

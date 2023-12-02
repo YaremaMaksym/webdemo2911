@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:ts="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Playlists</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.2/dist/css/bootstrap.css}">
+</head>
+<body>
+    <table class="table table-header table-striped table-bordered table-sm">
+        <thead class="table-dark">
+            <tr>
+                <th class="text-center">Id</th>
+                <th class="text-center">Name</th>
+                <th class="text-center">Info</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="p : ${playlists}">
+                <td th:text="${p.id}"></td>
+                <td th:text="${p.name}"></td>
+                <td>
+                    <a class="btn btn-outline-info btn-sm" th:href="@{/playlists/{id}(id=${p.id})}">Info</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <script  th:href="@{/webjars/bootstrap/5.3.2/dist/js/bootstrap.bundle.js}"></script>
+</body>
+</html>

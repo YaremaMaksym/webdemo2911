@@ -30,6 +30,7 @@ public class PlaylistController {
         Optional<Playlist> playlist = playlistService.getPlaylist(id);
         if(playlist.isPresent()) {
             model.addAttribute("playlist", playlist.get());
+            model.addAttribute("availableTracks", playlistService.getAvailableTracks(id));
             return "playlist_info";
         }
         else {

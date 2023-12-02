@@ -20,7 +20,7 @@ public class PlaylistService {
         return playlistRepository.findAll();
     }
 
-    public Optional<Playlist> getPlaylist(Integer id) {
+    public Optional<Playlist> getPlaylist(int id) {
         return playlistRepository.findById(id);
     }
 

@@ -1,15 +1,11 @@
 package com.yaremax.demo2911.controllers;
 
-import com.yaremax.demo2911.data.Artist;
 import com.yaremax.demo2911.data.Playlist;
 import com.yaremax.demo2911.services.PlaylistService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
@@ -26,7 +22,7 @@ public class PlaylistController {
     }
 
     @GetMapping("/{id}")
-    public String showArtistInfo(@PathVariable Integer id, Model model) {
+    public String showArtistInfo(@PathVariable int id, Model model) {
         Optional<Playlist> playlist = playlistService.getPlaylist(id);
         if(playlist.isPresent()) {
             model.addAttribute("playlist", playlist.get());
@@ -39,7 +35,7 @@ public class PlaylistController {
     }
 
     @DeleteMapping("/{pid}/{tid}")
-    public String deleteTrackFromPlaylist(@PathVariable int pid, @PathVariable int tid){
+    public String deleteTrackFromPlaylist(@PathVariable int pid, @PathVariable int tid) {
         playlistService.deleteTrackFromPlaylist(pid, tid);
         return "redirect:/playlists/"+pid;
     }

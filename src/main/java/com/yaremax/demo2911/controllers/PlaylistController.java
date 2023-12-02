@@ -36,4 +36,10 @@ public class PlaylistController {
             return "playlist_not_found";
         }
     }
+
+    @DeleteMapping("/{pid}/{tid}")
+    public String deleteTrackFromPlaylist(@PathVariable int pid, @PathVariable int tid){
+        playlistService.deleteTrackFromPlaylist(pid, tid);
+        return "redirect:/playlists/"+pid;
+    }
 }

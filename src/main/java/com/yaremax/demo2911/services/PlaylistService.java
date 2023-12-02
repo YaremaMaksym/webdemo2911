@@ -24,6 +24,10 @@ public class PlaylistService {
         return playlistRepository.findById(id);
     }
 
+    public List<TrackInfo> getAvailableTracks(int id) {
+        return trackService.findAvailableTracksForPlaylist(id);
+    }
+
     public void deleteTrackFromPlaylist(int pid, int tid) {
         Playlist playlist = getPlaylist(pid).get();
         playlist.getTracks().removeIf(t->t.getId() == tid);

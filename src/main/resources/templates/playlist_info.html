@@ -13,6 +13,7 @@
                 <th>Id</th>
                 <th>Name</th>
                 <th>Length</th>
+                <th class="text-center">Remove</th>
             </tr>
         </thead>
         <tbody>
@@ -20,6 +21,14 @@
                 <td th:text="${t.id}"></td>
                 <td th:text="${t.name}"></td>
                 <td th:text="${t.milliseconds}"></td>
+                <td class="text-center">
+                    <!-- Wrap the delete button in a form with th:method="delete" -->
+                    <form th:object="${t}" th:action="@{/playlists/{id}/{tid}(id=${playlist.id}, tid=${t.id})}" th:method="delete">
+                        <button type="submit" class="btn btn-danger btn-sm"><span class="bi bi-trash"></span></button>
+                        <!-- Hidden input to support DELETE method in Spring MVC -->
+                        <input type="hidden" name="_method" value="delete"/>
+                    </form>
+                </td>
             </tr>
         </tbody>
     </table>

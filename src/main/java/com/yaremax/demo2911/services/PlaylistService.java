@@ -21,4 +21,10 @@ public class PlaylistService {
     public Optional<Playlist> getPlaylist(Integer id) {
         return playlistRepository.findById(id);
     }
+
+    public void deleteTrackFromPlaylist(int pid, int tid) {
+        Playlist playlist = getPlaylist(pid).get();
+        playlist.getTracks().removeIf(t->t.getId() == tid);
+        playlistRepository.save(playlist);
+    }
 }

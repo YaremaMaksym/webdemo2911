@@ -42,4 +42,10 @@ public class PlaylistController {
         playlistService.deleteTrackFromPlaylist(pid, tid);
         return "redirect:/playlists/"+pid;
     }
+
+    @PostMapping("/{pid}/{tid}")
+    public String addTrackToPlaylist(@PathVariable int pid, @PathVariable int tid) {
+        playlistService.addTrackToPlaylist(pid, tid);
+        return "redirect:/playlists/"+pid;
+    }
 }
